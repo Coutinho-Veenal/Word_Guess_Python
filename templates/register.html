@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% block content %}
+<div class="ticket">
+<h2>Create a player account</h2>
+<form method="post">
+<label>Username
+<input name="username" pattern="[A-Za-z]{5,}" required
+ title="At least 5 letters, A-Z or a-z only" autofocus></label>
+<label>Password <input name="password" type="password" minlength="5" required></label>
+<small>Username needs 5 or more letters. Password needs 5 or more characters, including a letter, a digit, and one of $ % * )</small>
+<button class="primary">Register</button>
+</form>
+</div>
+<p class="linkline">Already registered? <a href="{{ url_for('login') }}">Log in</a></p>
+{% endblock %}

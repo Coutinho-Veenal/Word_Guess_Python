@@ -1,0 +1,34 @@
+{% extends "base.html" %}{% block content %}
+<div class="ticket">
+<h2>Daily report</h2>
+<form method="get" class="report-form">
+<label>Date <input type="date" name="day" value="{{ day }}" required></label>
+<button class="primary">Show</button>
+</form>
+{% if day_report %}
+<table>
+<tr><th>Date</th><th>Number of users</th><th>Correct guesses</th></tr>
+<tr><td>{{ day }}</td><td>{{ day_report.users }}</td><td>{{ day_report.correct }}</td></tr>
+</table>
+{% endif %}
+</div>
+
+<div class="ticket">
+<h2>Player report</h2>
+<form method="get" class="report-form">
+<label>Username <input name="user" value="{{ user }}" placeholder="e.g. Rahul" required></label>
+<button class="primary">Show</button>
+</form>
+{% if user_error %}<p class="flash error">{{ user_error }}</p>{% endif %}
+{% if user_report is not none %}
+<table>
+<tr><th>Date</th><th>Words tried</th><th>Correct guesses</th></tr>
+{% for r in user_report %}
+<tr><td>{{ r.play_date }}</td><td>{{ r.tried }}</td><td>{{ r.correct }}</td></tr>
+{% else %}
+<tr><td colspan="3">No games played yet.</td></tr>
+{% endfor %}
+</table>
+{% endif %}
+</div>
+{% endblock %}

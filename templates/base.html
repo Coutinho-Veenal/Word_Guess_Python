@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Word Guess</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head><body>
+<header>
+<h1>Word Guess</h1>
+<span class="who">
+{% if session.user_id %}{{ session.username }} · {{ session.role }}
+ · <a href="{{ url_for('logout') }}">Log out</a>{% endif %}
+</span>
+</header>
+<main>
+{% with msgs = get_flashed_messages() %}{% for m in msgs %}
+<p class="flash">{{ m }}</p>{% endfor %}{% endwith %}
+{% block content %}{% endblock %}
+</main></body></html>

@@ -1,0 +1,29 @@
+{% extends "base.html" %}{% block content %}
+<div class="ticket">
+<div class="status-line">
+<span>Words played today: <strong id="playedCount">0</strong>/<strong>3</strong></span>
+<button id="start" class="primary">Start new word</button>
+</div>
+
+<div id="board"></div>
+
+<div id="entry" class="entry-row" hidden>
+<input id="guess" maxlength="5" autocomplete="off" placeholder="GUESS">
+<button id="submit" class="primary">Submit</button>
+</div>
+
+<div id="keyboard"></div>
+
+<p id="msg" class="flash error" hidden></p>
+</div>
+
+<div id="overlay" class="overlay" hidden>
+<div class="modal">
+<h3 id="modalTitle"></h3>
+<p id="modalText"></p>
+<button id="modalOk" class="primary">OK</button>
+</div>
+</div>
+
+<script src="{{ url_for('static', filename='game.js') }}"></script>
+{% endblock %}
